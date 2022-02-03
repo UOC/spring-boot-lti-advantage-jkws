@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>edu.uoc.elc</groupId>
+  <artifactId>spring-boot-lti-advantage-jkws</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <packaging>jar</packaging>
+
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description>JKWS library for LTI advantage Spring Boot projects</description>
+  <url>https://github.com/UOC/spring-boot-lti-advantage-jkws</url>
+
+  <distributionManagement>
+    <repository>
+      <id>github-uoc</id>
+      <name>GitHub UOC Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/uoc/spring-boot-lti-advantage-jkws</url>
+    </repository>
+  </distributionManagement>
+
+  <developers>
+    <developer>
+      <name>Xavi Aracil</name>
+      <email>xaracil@uoc.edu</email>
+      <organization>Universitat Oberta de Catalunya</organization>
+      <organizationUrl>https://www.uoc.edu</organizationUrl>
+    </developer>
+  </developers>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+  </properties>
+
+  <dependencies>
+  <dependency>
+    <groupId>edu.uoc.elc.lti</groupId>
+    <artifactId>spring-boot-lti-advantage</artifactId>
+    <version>0.0.11-SNAPSHOT</version>
+  </dependency>
+
+  <dependency>
+    <groupId>edu.uoc.elc.lti</groupId>
+    <artifactId>lti-13-jwt</artifactId>
+    <version>0.0.4-SNAPSHOT</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.22</version>
+    <scope>provided</scope>
+  </dependency>
+  </dependencies>
+
+</project>
