@@ -60,11 +60,15 @@ Install it using maven:
 
 ## About
 
-This library makes essentially one thing: Define a controller for serving Keys to a LTI platform. The Controller is
+This library makes essentially two things: Define a controller for serving Keys to a LTI platform and provide service implementations. 
+
+### Controller
+
+The Controller is
 defined in `edu.uoc.elc.spring.lti.jkws.WellKnowKeysController`, and depens on `edu.uoc.elc.spring.lti.tool.registration.RegistrationService` 
 (defined in [Springboot LTI Advantage](https://github.com/UOC/spring-boot-lti-advantage))for getting the keys
 
-### Configuration
+#### Configuration
 
 `edu.uoc.elc.spring.lti.jkws.WellKnowKeysController` defines its path via the `jkws.wellkownuri` property. So, defining this property in your `application.yaml` or `application.properties` will work.
 If not present, the default path is `/.well-known/jwks.json`.
@@ -73,6 +77,23 @@ Take into account that you'll need to scan the package in your application for s
 
 ```
 @ComponentScan({"edu.uoc.elc.spring.lti.jkws"})
+```
+
+### Service implementations
+
+[Springboot LTI Advantage](https://github.com/UOC/spring-boot-lti-advantage) define three services for managing signed requests: `edu.uoc.elc.spring.lti.tool.builders.ClaimAccessorService` (for accessing JWT claims in LTIResourceLaunch), `edu.uoc.elc.spring.lti.tool.builders.DeepLinkingTokenBuilderService` (for creating DeepLinking request to the platform) and `edu.uoc.elc.spring.lti.tool.builders.ClientCredentialsTokenBuilderService` (for creating access token request to the platform). 
+This library provide implementations for all three services using JWKS.
+
+* `edu.uoc.elc.spring.lti.tool.builders.JWSClaimAccessorService`
+* `edu.uoc.elc.spring.lti.tool.builders.JWSDeepLinkingTokenBuilderService`
+* `edu.uoc.elc.spring.lti.tool.builders.JWSClientCredentialsTokenBuilderService`
+
+#### Configuration
+
+Take into account that you'll need to scan the package in your application for setting into spring. This is done via adding to you Application:
+
+```
+@ComponentScan({"edu.uoc.elc.spring.lti.tool.builders"})
 ```
 
 ## Contributing
